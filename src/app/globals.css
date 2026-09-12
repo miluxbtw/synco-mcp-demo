@@ -6,7 +6,12 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-deep: var(--background-deep);
+  --color-background-raised: var(--background-raised);
   --color-foreground: var(--foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-subtle-foreground: var(--subtle-foreground);
+  --color-border-strong: var(--border-strong);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-geist-sans);
@@ -50,7 +55,12 @@
 
 :root {
   --background: oklch(1 0 0);
+  --background-deep: oklch(0.97 0 0);
+  --background-raised: oklch(0.985 0 0);
   --foreground: oklch(0.145 0 0);
+  --primary-soft: oklch(0.55 0.13 70);
+  --subtle-foreground: oklch(0.45 0 0);
+  --border-strong: oklch(0.87 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -83,38 +93,47 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/*
+ * Night control room: unlit graphite housing, backlit label etching,
+ * amber status lamp. The amber is functional — CTAs, signals, markers.
+ */
 .dark {
-  --background: oklch(0.155 0.012 265);
-  --foreground: oklch(0.97 0.005 265);
-  --card: oklch(0.202 0.014 265);
-  --card-foreground: oklch(0.97 0.005 265);
-  --popover: oklch(0.202 0.014 265);
-  --popover-foreground: oklch(0.97 0.005 265);
-  --primary: oklch(0.72 0.155 268);
-  --primary-foreground: oklch(0.16 0.02 268);
-  --secondary: oklch(0.27 0.018 265);
-  --secondary-foreground: oklch(0.97 0.005 265);
-  --muted: oklch(0.26 0.016 265);
-  --muted-foreground: oklch(0.715 0.02 265);
-  --accent: oklch(0.28 0.03 265);
-  --accent-foreground: oklch(0.97 0.005 265);
+  --background: #08090b;
+  --background-deep: #050607;
+  --background-raised: #0b0c0f;
+  --foreground: #ecedef;
+  --card: #0e1013;
+  --card-foreground: #ecedef;
+  --popover: #0e1013;
+  --popover-foreground: #ecedef;
+  --primary: #ffb020;
+  --primary-foreground: #0a0b0d;
+  --primary-soft: #ffc66b;
+  --secondary: #14161a;
+  --secondary-foreground: #ecedef;
+  --muted: #101216;
+  --muted-foreground: #9ba1a8;
+  --subtle-foreground: #6e747c;
+  --accent: #16181d;
+  --accent-foreground: #ecedef;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.62 0.14 268);
-  --chart-1: oklch(0.72 0.155 268);
-  --chart-2: oklch(0.75 0.13 200);
-  --chart-3: oklch(0.78 0.14 160);
-  --chart-4: oklch(0.8 0.14 85);
-  --chart-5: oklch(0.7 0.16 20);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: rgb(255 255 255 / 8%);
+  --border-strong: rgb(255 255 255 / 12%);
+  --input: rgb(255 255 255 / 12%);
+  --ring: rgb(255 176 32 / 50%);
+  --chart-1: #ffb020;
+  --chart-2: #ffc66b;
+  --chart-3: #9ba1a8;
+  --chart-4: #6e747c;
+  --chart-5: #3a3f46;
+  --sidebar: #0b0c0f;
+  --sidebar-foreground: #ecedef;
+  --sidebar-primary: #ffb020;
+  --sidebar-primary-foreground: #0a0b0d;
+  --sidebar-accent: #16181d;
+  --sidebar-accent-foreground: #ecedef;
+  --sidebar-border: rgb(255 255 255 / 8%);
+  --sidebar-ring: rgb(255 176 32 / 50%);
 }
 
 @layer base {

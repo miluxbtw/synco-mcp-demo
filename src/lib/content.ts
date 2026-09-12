@@ -3,6 +3,14 @@
  * without rewriting the text. Source: docs/project-context.md.
  */
 
+export const nav = [
+  { href: "#what-it-is", label: "What it is" },
+  { href: "#problems", label: "Problems" },
+  { href: "#solution", label: "Solution" },
+  { href: "#values", label: "Value" },
+  { href: "#audience", label: "Audience" },
+] as const;
+
 export const hero = {
   badge: "Open source · self-hosted · MCP-native",
   title: "The shared coordination layer for AI coding agents",
@@ -12,6 +20,25 @@ export const hero = {
   primaryCtaHint: "Coming soon",
   secondaryCta: "Self-host on GitHub",
   secondaryCtaHint: "Run it on your own infrastructure",
+} as const;
+
+/** Labels for the hero architecture panel. */
+export const diagram = {
+  title: "One project space",
+  protocol: "MCP",
+  layer: "synco-mcp coordination layer",
+  layerCaption: "Model Context Protocol",
+  agents: [
+    { key: "A", role: "backend" },
+    { key: "B", role: "frontend" },
+    { key: "C", role: "tests" },
+  ],
+  artifacts: [
+    "Shared project state",
+    "Task and resource claims",
+    "ChangeReports",
+    "Context handoffs",
+  ],
 } as const;
 
 export const whatItIs = {
@@ -41,6 +68,10 @@ export const whatItIs = {
   ],
 } as const;
 
+/**
+ * The seven problems state the pain only. The answer to all of them is
+ * written once, in `solution` below.
+ */
 export const problems = {
   eyebrow: "Problems it solves",
   title: "Seven failure modes of running agents side by side",
@@ -48,88 +79,96 @@ export const problems = {
     "Each of these shows up the moment more than one agent touches the same repository.",
   items: [
     {
+      index: "01",
       title: "No shared context between agents",
       problem:
         "Agents work in their own sessions and do not know what another agent already did. One changes the API structure while another keeps using the old request format.",
-      solutions: [
-        "Shared project state",
-        "History of important changes",
-        "Current technical context on demand",
-        "Completed tasks and decisions made",
-      ],
     },
     {
+      index: "02",
       title: "Duplicated work",
       problem:
         "Several agents run the same task at the same time because they do not know about each other. Two agents independently implement the same authentication flow.",
-      solutions: [
-        "One shared task list",
-        "Agents reserve the task they take",
-        "Clear ownership for each piece of work",
-        "Live execution status",
-      ],
     },
     {
+      index: "03",
       title: "No signal on work in progress",
       problem:
         "An agent starts editing a file another agent is already changing. Git catches the conflict later — after the time is already lost.",
-      solutions: [
-        "Agents announce which files they intend to change",
-        "Active resource claims are registered",
-        "Anyone can check which resources are taken",
-        "Overlapping claims raise a warning",
-      ],
     },
     {
+      index: "04",
       title: "Vague, unusable change reports",
       problem:
         "“Updated the backend” or “fixed authentication” tells the next agent nothing: not which files changed, not what was actually done, not which parts of the project are affected.",
-      solutions: [
-        "Structured ChangeReports with a short summary",
-        "List of changed files and concrete per-file actions",
-        "Affected components and areas of the project",
-        "Interface and API changes, plus potential breaking changes",
-        "Test status and next steps",
-      ],
     },
     {
+      index: "05",
       title: "Context lost at handoff",
       problem:
         "When one agent finishes its part, the next one has to work out on its own what was done, which problems were found, and what is still open.",
-      solutions: [
-        "Handoff carries the completed work",
-        "Important files that changed",
-        "Technical decisions taken",
-        "Known issues and unfinished tasks",
-        "Recommended next steps",
-      ],
     },
     {
+      index: "06",
       title: "No transparency for the developer",
       problem:
         "You cannot always tell what each agent is busy with, which tasks are already finished, and where things went wrong.",
-      solutions: [
-        "Active agents, current tasks and statuses",
-        "An event feed and ChangeReports",
-        "Claimed resources and potential conflicts",
-        "Context handoffs between agents",
-      ],
     },
     {
+      index: "07",
       title: "Lock-in to a single AI platform",
       problem:
         "Agents live in different development environments and run on different models. Without a common interface, integrating them takes separate adapters and non-standard data exchange.",
-      solutions: [
-        "One MCP interface to the coordination layer",
-        "Any compatible client can use the available tools",
-        "The same project data regardless of model or platform",
-      ],
+    },
+  ],
+} as const;
+
+/** The answer to all seven problems, stated once. */
+export const solution = {
+  title: "How synco-mcp solves it",
+  lead: "One coordination layer answers all seven: agents share state, split up work, and pass technical context through a single MCP interface.",
+  caveat:
+    "synco-mcp does not replace Git and does not guarantee conflict-free work; it surfaces potential problems earlier.",
+  capabilities: [
+    {
+      label: "Shared project state",
+      description:
+        "Tasks, agents, changes and interactions live in one project space, with a history of important changes and current technical context on demand.",
+    },
+    {
+      label: "One task list",
+      description:
+        "Agents see one shared task list, reserve the task they take, and expose clear ownership and live execution status.",
+    },
+    {
+      label: "Resource claims",
+      description:
+        "Agents announce which files they intend to change. Active claims are registered, and overlapping claims raise a warning.",
+    },
+    {
+      label: "Structured ChangeReports",
+      description:
+        "A short summary, changed files and per-file actions, affected components, interface and API changes, potential breaking changes, test status and next steps.",
+    },
+    {
+      label: "Context handoffs",
+      description:
+        "A handoff carries the completed work, the important files that changed, technical decisions taken, known issues and recommended next steps.",
+    },
+    {
+      label: "Live dashboard",
+      description:
+        "Active agents, current tasks and statuses, an event feed, ChangeReports, claimed resources and potential conflicts in one view.",
+    },
+    {
+      label: "A single MCP interface",
+      description:
+        "Any MCP-compatible client uses the same tools and the same project data, regardless of model or platform.",
     },
   ],
 } as const;
 
 export const values = {
-  eyebrow: "Value",
   title: "Three things a shared coordination layer buys you",
   description:
     "Instead of several isolated AI tools, you get a more coherent system for working on one codebase.",
@@ -152,7 +191,7 @@ export const values = {
 } as const;
 
 export const audience = {
-  eyebrow: "Who it's for",
+  eyebrow: "Who it’s for",
   title: "Built for people already running more than one agent",
   items: [
     "Developers using several AI coding agents",
@@ -166,6 +205,9 @@ export const audience = {
 export const footer = {
   description:
     "A shared coordination layer for AI coding agents. Turn several independent agents into one coordinated development team.",
+  pageLinksLabel: "On this page",
+  sourceLabel: "Source",
+  startNowStatus: "Start Now — coming soon",
   disclaimer:
-    "synco-mcp does not replace Git and does not guarantee conflict-free work; it surfaces potential problems earlier. Actual MCP and realtime support depends on the capabilities of each client.",
+    "Actual MCP and realtime support depends on the capabilities of each client.",
 } as const;

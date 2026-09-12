@@ -2,48 +2,58 @@ import { cn } from "cn";
 
 export function Section({
   id,
-  eyebrow,
-  title,
-  description,
   className,
   children,
 }: {
   id?: string;
-  eyebrow?: string;
-  title?: string;
-  description?: string;
   className?: string;
   children: React.ReactNode;
 }) {
   return (
     <section
       id={id}
-      className={cn("border-t border-border/60 py-16 sm:py-24", className)}
+      className={cn("border-b border-border", className)}
     >
-      <div className="mx-auto w-full max-w-5xl px-5 sm:px-8">
-        {(eyebrow || title || description) && (
-          <div className="max-w-2xl">
-            {eyebrow && (
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
-                {eyebrow}
-              </p>
-            )}
-            {title && (
-              <h2 className="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
-                {title}
-              </h2>
-            )}
-            {description && (
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                {description}
-              </p>
-            )}
-          </div>
-        )}
-        <div className={cn(eyebrow || title || description ? "mt-10" : "")}>
-          {children}
-        </div>
+      <div className="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-26">
+        {children}
       </div>
     </section>
+  );
+}
+
+export function SectionHeading({
+  eyebrow,
+  title,
+  description,
+  className,
+  titleClassName,
+}: {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  className?: string;
+  titleClassName?: string;
+}) {
+  return (
+    <div className={cn("flex flex-col gap-3.5", className)}>
+      {eyebrow && (
+        <span className="font-mono text-xs tracking-[0.16em] text-primary uppercase">
+          {eyebrow}
+        </span>
+      )}
+      <h2
+        className={cn(
+          "text-[28px] font-semibold tracking-[-0.02em] sm:text-[34px] lg:text-[38px] lg:leading-[1.15]",
+          titleClassName,
+        )}
+      >
+        {title}
+      </h2>
+      {description && (
+        <p className="text-base leading-relaxed text-muted-foreground">
+          {description}
+        </p>
+      )}
+    </div>
   );
 }
