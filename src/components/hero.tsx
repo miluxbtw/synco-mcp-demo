@@ -7,10 +7,7 @@ import { site } from "@/lib/site";
 
 export function Hero() {
   return (
-    <section
-      id="top"
-      className="relative overflow-hidden border-b border-border"
-    >
+    <section className="relative overflow-hidden border-b border-border">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-60 -left-44 h-[580px] w-[860px] rounded-full bg-primary/[0.08] blur-[150px]"

@@ -1,15 +1,35 @@
+"use client";
+
+import type { MouseEvent } from "react";
+
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/github-icon";
 import { StatusLamp } from "@/components/status-lamp";
 import { hero, nav } from "@/lib/content";
 import { site } from "@/lib/site";
 
+function scrollToDocumentTop(event: MouseEvent<HTMLAnchorElement>) {
+  if (
+    event.button !== 0 ||
+    event.metaKey ||
+    event.ctrlKey ||
+    event.shiftKey ||
+    event.altKey
+  ) {
+    return;
+  }
+
+  event.preventDefault();
+  window.scrollTo({ top: 0 });
+}
+
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-14 w-full max-w-[1280px] items-center gap-6 px-5 sm:px-8 lg:gap-10 lg:px-10">
         <a
-          href="#top"
+          href="#"
+          onClick={scrollToDocumentTop}
           className="flex shrink-0 items-center gap-2.5 font-mono text-base font-medium tracking-tight"
         >
           <StatusLamp />
