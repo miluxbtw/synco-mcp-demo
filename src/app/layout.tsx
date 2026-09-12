@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import type { ReactNode } from "react";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,7 +19,11 @@ export const metadata: Metadata = {
     "synco-mcp is a self-hosted coordination server that lets multiple AI coding agents across different platforms and models work on one codebase as a team, over the Model Context Protocol.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: ReactNode;
+}>) {
   return (
     <html
       lang="en"
