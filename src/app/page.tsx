@@ -15,12 +15,7 @@ import {
 
 const valueIcons = [Eye, Network, Share2];
 
-const problemCardStyles =
-  "flex h-full flex-col gap-3 rounded-2xl border border-border bg-white/[0.02] p-6 shadow-[0_0_0_1px_rgb(255_255_255/0.03),0_8px_32px_rgb(0_0_0/0.4)]";
-
 export default function Home() {
-  const listedProblems = problems.items.slice(0, -1);
-  const closingProblem = problems.items[problems.items.length - 1];
   const capabilities = solution.capabilities;
 
   return (
@@ -29,20 +24,20 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
 
-        {/* What it is — prose beside the three highlights */}
+        {/* What it is — short prose beside three one-line highlights */}
         <Section id="what-it-is">
-          <div className="flex flex-col gap-12 lg:flex-row lg:gap-20">
-            <div className="flex flex-1 flex-col gap-6">
+          <div className="flex flex-col gap-14 lg:flex-row lg:gap-24">
+            <div className="flex flex-1 flex-col gap-7">
               <SectionHeading
                 eyebrow={whatItIs.eyebrow}
                 title={whatItIs.title}
-                titleClassName="max-w-[620px]"
+                titleClassName="max-w-[600px]"
               />
-              <div className="flex max-w-[620px] flex-col gap-4">
+              <div className="flex max-w-[600px] flex-col gap-5">
                 {whatItIs.paragraphs.map((paragraph) => (
                   <p
                     key={paragraph}
-                    className="text-base leading-[1.7] text-muted-foreground"
+                    className="text-[17px] leading-[1.7] text-muted-foreground"
                   >
                     {paragraph}
                   </p>
@@ -50,13 +45,13 @@ export default function Home() {
               </div>
             </div>
 
-            <ul className="flex shrink-0 flex-col lg:w-[440px]">
+            <ul className="flex shrink-0 flex-col lg:w-[400px]">
               {whatItIs.highlights.map((highlight, index) => (
                 <li
                   key={highlight.title}
                   className={cn(
-                    "flex flex-col gap-2 py-5.5",
-                    index === 0 && "pt-0 lg:pt-0",
+                    "flex flex-col gap-1.5 py-6",
+                    index === 0 && "pt-0",
                     index < whatItIs.highlights.length - 1 &&
                       "border-b border-border",
                     index === whatItIs.highlights.length - 1 && "pb-0",
@@ -67,7 +62,7 @@ export default function Home() {
                       aria-hidden="true"
                       className="size-[5px] shrink-0 rounded-full bg-primary"
                     />
-                    <span className="text-[15px] font-medium">
+                    <span className="text-base font-medium">
                       {highlight.title}
                     </span>
                   </div>
@@ -80,23 +75,20 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* The seven problems — pain only, one uniform card treatment */}
+        {/* Six problems — pain only, one uniform card, clean 3x2 grid */}
         <Section id="problems">
           <SectionHeading
             eyebrow={problems.eyebrow}
             title={problems.title}
             description={problems.description}
-            className="max-w-[700px]"
+            titleClassName="max-w-[640px]"
           />
 
-          <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {listedProblems.map((item) => (
+          <ul className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {problems.items.map((item) => (
               <li
                 key={item.index}
-                className={cn(
-                  problemCardStyles,
-                  "sm:min-h-[236px] lg:min-h-[212px]",
-                )}
+                className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-white/[0.02] p-7 shadow-[0_0_0_1px_rgb(255_255_255/0.03),0_8px_32px_rgb(0_0_0/0.4)]"
               >
                 <span className="font-mono text-xs tracking-[0.14em] text-primary">
                   {item.index}
@@ -109,42 +101,23 @@ export default function Home() {
                 </p>
               </li>
             ))}
-
-            {/* The seventh card closes the row full-width, so no orphan tail */}
-            <li
-              className={cn(
-                problemCardStyles,
-                "gap-6 sm:col-span-2 lg:col-span-3 lg:flex-row lg:items-start lg:gap-10",
-              )}
-            >
-              <div className="flex flex-col gap-3 lg:w-[380px] lg:shrink-0">
-                <span className="font-mono text-xs tracking-[0.14em] text-primary">
-                  {closingProblem.index}
-                </span>
-                <h3 className="text-[19px] font-semibold tracking-[-0.01em]">
-                  {closingProblem.title}
-                </h3>
-              </div>
-              <p className="flex-1 text-[15px] leading-relaxed text-muted-foreground">
-                {closingProblem.problem}
-              </p>
-            </li>
           </ul>
         </Section>
 
-        {/* The answer to all seven, written once */}
+        {/* The answer to all six, stated once — one panel, not a card grid */}
         <Section id="solution" className="relative overflow-hidden">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -bottom-75 right-20 h-[520px] w-[720px] rounded-full bg-primary/[0.06] blur-[150px]"
           />
-          <div className="relative flex flex-col gap-12 lg:flex-row lg:gap-20">
-            <div className="flex flex-col gap-4 lg:w-[400px] lg:shrink-0">
-              <SectionHeading title={solution.title} />
-              <p className="text-base leading-[1.7] text-muted-foreground">
-                {solution.lead}
-              </p>
-              <p className="mt-3 border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground">
+          <div className="relative flex flex-col gap-14 lg:flex-row lg:gap-24">
+            <div className="flex flex-col gap-6 lg:w-[400px] lg:shrink-0">
+              <SectionHeading
+                eyebrow={solution.eyebrow}
+                title={solution.title}
+                description={solution.lead}
+              />
+              <p className="border-t border-border pt-6 text-sm leading-relaxed text-subtle-foreground">
                 {solution.caveat}
               </p>
             </div>
@@ -154,26 +127,27 @@ export default function Home() {
                 aria-hidden="true"
                 className="h-0.5 w-full bg-gradient-to-r from-primary to-primary/5"
               />
-              <dl className="flex flex-col px-6 py-1.5 sm:px-7">
+              <dl className="grid sm:grid-cols-2">
                 {capabilities.map((capability, index) => (
                   <div
                     key={capability.label}
                     className={cn(
-                      "flex flex-col gap-2 py-4.5 sm:flex-row sm:items-start sm:gap-7",
-                      index < capabilities.length - 1 &&
-                        "border-b border-white/[0.06]",
+                      "flex flex-col gap-2 p-7",
+                      index > 0 && "border-t border-white/[0.06]",
+                      index === 1 && "sm:border-t-0",
+                      index % 2 === 0 && "sm:border-r sm:border-white/[0.06]",
                     )}
                   >
-                    <dt className="flex items-start gap-2.5 sm:w-[210px] sm:shrink-0">
+                    <dt className="flex items-center gap-2.5">
                       <span
                         aria-hidden="true"
-                        className="mt-[9px] size-1.5 shrink-0 rounded-full bg-primary"
+                        className="size-1.5 shrink-0 rounded-full bg-primary"
                       />
-                      <span className="text-[15px] font-medium">
+                      <span className="text-base font-medium">
                         {capability.label}
                       </span>
                     </dt>
-                    <dd className="flex-1 text-[15px] leading-relaxed text-muted-foreground">
+                    <dd className="text-[15px] leading-relaxed text-muted-foreground">
                       {capability.description}
                     </dd>
                   </div>
@@ -187,11 +161,10 @@ export default function Home() {
         <Section id="values" className="bg-background-raised">
           <SectionHeading
             title={values.title}
-            description={values.description}
-            className="max-w-[680px]"
+            titleClassName="max-w-[620px]"
           />
 
-          <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-0">
+          <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-0">
             {values.items.map((value, index) => {
               const Icon = valueIcons[index];
               return (
@@ -199,9 +172,9 @@ export default function Home() {
                   key={value.title}
                   className={cn(
                     "flex flex-col gap-3.5",
-                    index === 0 && "md:pr-10",
-                    index === 1 && "md:border-l md:border-border md:px-10",
-                    index === 2 && "md:border-l md:border-border md:pl-10",
+                    index === 0 && "md:pr-12",
+                    index === 1 && "md:border-l md:border-border md:px-12",
+                    index === 2 && "md:border-l md:border-border md:pl-12",
                   )}
                 >
                   <span className="flex size-[38px] shrink-0 items-center justify-center rounded-xl border border-primary/30 bg-primary/[0.09]">
@@ -219,25 +192,23 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* Who it's for */}
+        {/* Who it's for — two short columns, not a bullet wall */}
         <Section id="audience">
-          <div className="flex flex-col gap-10 lg:flex-row lg:gap-20">
+          <div className="flex flex-col gap-12 lg:flex-row lg:gap-24">
             <SectionHeading
               eyebrow={audience.eyebrow}
               title={audience.title}
-              className="lg:w-[420px] lg:shrink-0"
-              titleClassName="text-[26px] sm:text-[30px] lg:text-[32px] lg:leading-[1.2]"
+              className="lg:w-[400px] lg:shrink-0"
+              titleClassName="text-[26px] sm:text-[32px] lg:text-[34px] lg:leading-[1.2]"
             />
-            <ul className="flex flex-1 flex-col gap-4.5">
+            <ul className="grid flex-1 gap-x-12 gap-y-5 sm:grid-cols-2">
               {audience.items.map((item) => (
                 <li key={item} className="flex items-start gap-3.5">
                   <span
                     aria-hidden="true"
                     className="mt-[9px] size-[7px] shrink-0 rounded-[2px] bg-primary"
                   />
-                  <span className="text-base leading-relaxed sm:text-[17px]">
-                    {item}
-                  </span>
+                  <span className="text-base leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>

@@ -10,11 +10,8 @@ export function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section
-      id={id}
-      className={cn("border-b border-border", className)}
-    >
-      <div className="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-26">
+    <section id={id} className={cn("border-b border-border", className)}>
+      <div className="mx-auto w-full max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32 lg:px-10 lg:py-40">
         {children}
       </div>
     </section>
@@ -35,7 +32,7 @@ export function SectionHeading({
   titleClassName?: string;
 }) {
   return (
-    <div className={cn("flex flex-col gap-3.5", className)}>
+    <div className={cn("flex flex-col gap-4", className)}>
       {eyebrow && (
         <span className="font-mono text-xs tracking-[0.16em] text-primary uppercase">
           {eyebrow}
@@ -43,14 +40,14 @@ export function SectionHeading({
       )}
       <h2
         className={cn(
-          "text-[28px] font-semibold tracking-[-0.02em] sm:text-[34px] lg:text-[38px] lg:leading-[1.15]",
+          "text-[30px] font-semibold tracking-[-0.025em] sm:text-[38px] lg:text-[44px] lg:leading-[1.1]",
           titleClassName,
         )}
       >
         {title}
       </h2>
       {description && (
-        <p className="text-base leading-relaxed text-muted-foreground">
+        <p className="max-w-[520px] text-[17px] leading-relaxed text-muted-foreground">
           {description}
         </p>
       )}
