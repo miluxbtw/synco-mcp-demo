@@ -54,7 +54,7 @@
 }
 
 :root {
-  --header-height: 3.5rem;
+  --header-height: calc(3.5rem + 1px);
   --background: oklch(1 0 0);
   --background-deep: oklch(0.97 0 0);
   --background-raised: oklch(0.985 0 0);
