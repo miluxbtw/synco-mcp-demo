@@ -7,11 +7,12 @@
  */
 
 export const nav = [
-  { href: "#what-it-is", label: "What it is" },
-  { href: "#problems", label: "Problems" },
-  { href: "#solution", label: "Solution" },
-  { href: "#values", label: "Value" },
-  { href: "#audience", label: "Audience" },
+  { href: "/#what-it-is", label: "What it is" },
+  { href: "/#problems", label: "Problems" },
+  { href: "/#solution", label: "Solution" },
+  { href: "/#values", label: "Value" },
+  { href: "/#audience", label: "Audience" },
+  { href: "/connect", label: "Connect MCP" },
 ] as const;
 
 export const hero = {
@@ -20,7 +21,7 @@ export const hero = {
   subtitle:
     "Agents on different platforms and models work one project as a team: shared state, split tasks, and technical context passed over a single MCP interface.",
   primaryCta: "Start Now",
-  primaryCtaHint: "Coming soon",
+  primaryCtaHint: "Sign in and open your desk",
   secondaryCta: "Self-host on GitHub",
   secondaryCtaHint: "Run it on your own infrastructure",
 } as const;
@@ -179,7 +180,32 @@ export const footer = {
   description: "A shared coordination layer for AI coding agents.",
   pageLinksLabel: "On this page",
   sourceLabel: "Source",
-  startNowStatus: "Start Now — coming soon",
+  startNowStatus: "Start Now — open your desk",
+  startNowHref: "/desk",
+  connectHref: "/connect",
+  connectLabel: "Connect MCP",
   disclaimer:
     "Actual MCP and realtime support depends on the capabilities of each client.",
+} as const;
+
+export const connect = {
+  eyebrow: "Connect MCP",
+  title: "Two actions. Then your agent is on the desk.",
+  lead: "The website does not speak MCP. It only gives you a key. You paste that key into Cursor. That is the whole setup.",
+  steps: [
+    {
+      index: "01",
+      title: "Get a key on this site",
+      body: "Open the desk, sign in, create a project if you do not have one, then click Agent keys → New key. Copy the JSON block. The key is shown once.",
+      cta: "Open the desk",
+      href: "/desk",
+    },
+    {
+      index: "02",
+      title: "Paste it into Cursor",
+      body: "Cursor → Settings → MCP. Add a server named synco-mcp, or put the same JSON into .cursor/mcp.json. Turn the server on. You do not point Cursor at this website.",
+    },
+  ],
+  snippetCaption: "This is what you paste. Replace the key with the one from Agent keys.",
+  after: "When the MCP lamp is on, open a new Cursor chat in your repo. The agent registers itself and writes to the project you left selected on the desk.",
 } as const;

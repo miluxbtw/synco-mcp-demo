@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CoordinationDiagram } from "@/components/coordination-diagram";
@@ -41,6 +42,19 @@ export function Hero() {
                 asChild
                 className="h-12 gap-2.5 rounded-[10px] px-5.5 text-[15px] font-semibold shadow-[0_0_0_1px_rgb(255_176_32/0.5),0_6px_24px_rgb(255_176_32/0.22),inset_0_1px_0_0_rgb(255_255_255/0.3)]"
               >
+                <Link href="/desk">{hero.primaryCta}</Link>
+              </Button>
+              <span className="text-[13px] text-muted-foreground">
+                {hero.primaryCtaHint}
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-2.5">
+              <Button
+                asChild
+                variant="outline"
+                className="h-12 gap-2.5 rounded-[10px] border-border-strong bg-white/[0.03] px-5.5 text-[15px] dark:bg-white/[0.03]"
+              >
                 <a
                   href={site.githubUrl}
                   target="_blank"
@@ -52,20 +66,6 @@ export function Hero() {
               </Button>
               <span className="text-[13px] text-muted-foreground">
                 {hero.secondaryCtaHint}
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-2.5">
-              <Button
-                disabled
-                aria-disabled="true"
-                variant="outline"
-                className="h-12 cursor-not-allowed rounded-[10px] border-border-strong bg-white/[0.03] px-5.5 text-[15px] text-subtle-foreground opacity-100 dark:bg-white/[0.03]"
-              >
-                {hero.primaryCta}
-              </Button>
-              <span className="text-[13px] text-muted-foreground">
-                {hero.primaryCtaHint}
               </span>
             </div>
           </div>

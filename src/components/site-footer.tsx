@@ -55,12 +55,25 @@ export function SiteFooter() {
                     {hero.secondaryCta}
                   </a>
                 </li>
-                <li className="inline-flex items-center gap-2 text-sm text-subtle-foreground">
-                  <span
-                    aria-hidden="true"
-                    className="size-1.5 rounded-full bg-subtle-foreground/60"
-                  />
-                  {footer.startNowStatus}
+                <li>
+                  <a
+                    href={footer.connectHref}
+                    className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {footer.connectLabel}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={footer.startNowHref}
+                    className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="size-1.5 rounded-full bg-primary"
+                    />
+                    {footer.startNowStatus}
+                  </a>
                 </li>
               </ul>
             </div>

@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, type MouseEvent } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -25,6 +27,7 @@ function scrollToDocumentTop(event: MouseEvent<HTMLAnchorElement>) {
 }
 
 export function SiteHeader() {
+  const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
 
@@ -73,14 +76,14 @@ export function SiteHeader() {
         />
       </div>
       <div className="relative mx-auto flex h-14 w-full max-w-[1280px] items-center gap-6 px-5 sm:px-8 lg:gap-10 lg:px-10">
-        <a
-          href="#"
-          onClick={scrollToDocumentTop}
+        <Link
+          href="/"
+          onClick={pathname === "/" ? scrollToDocumentTop : undefined}
           className="group flex shrink-0 items-center gap-2.5 font-mono text-base font-medium tracking-tight"
         >
           <StatusLamp className="transition-shadow duration-200 ease-out group-hover:shadow-[0_0_16px_3px_rgb(255_176_32/0.62)] group-focus-visible:shadow-[0_0_16px_3px_rgb(255_176_32/0.62)]" />
           {site.name}
-        </a>
+        </Link>
 
         <nav className="hidden flex-1 items-center gap-8 md:flex">
           {nav.map((item) => (
@@ -94,17 +97,25 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Button
-          variant="outline"
-          asChild
-          className="ml-auto h-[38px] shrink-0 gap-2 border-border-strong bg-white/[0.04] px-3.5 text-[13px] shadow-[inset_0_1px_0_0_rgb(255_255_255/0.06)] md:ml-0 dark:bg-white/[0.04] dark:hover:bg-white/[0.07]"
-        >
-          <a href={site.githubUrl} target="_blank" rel="noreferrer noopener">
-            <GithubIcon className="size-[15px]" />
-            <span className="hidden sm:inline">{hero.secondaryCta}</span>
-            <span className="sm:hidden">GitHub</span>
-          </a>
-        </Button>
+        <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
+          <Button
+            asChild
+            className="h-[38px] px-3.5 text-[13px] font-semibold"
+          >
+            <Link href="/desk">{hero.primaryCta}</Link>
+          </Button>
+          <Button
+            variant="outline"
+            asChild
+            className="h-[38px] gap-2 border-border-strong bg-white/[0.04] px-3.5 text-[13px] shadow-[inset_0_1px_0_0_rgb(255_255_255/0.06)] dark:bg-white/[0.04] dark:hover:bg-white/[0.07]"
+          >
+            <a href={site.githubUrl} target="_blank" rel="noreferrer noopener">
+              <GithubIcon className="size-[15px]" />
+              <span className="hidden sm:inline">{hero.secondaryCta}</span>
+              <span className="sm:hidden">GitHub</span>
+            </a>
+          </Button>
+        </div>
       </div>
     </header>
   );
