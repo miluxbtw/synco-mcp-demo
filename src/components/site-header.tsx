@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
-      <div className="mx-auto flex h-[72px] w-full max-w-[1280px] items-center gap-6 px-5 sm:px-8 lg:gap-10 lg:px-10">
+      <div className="mx-auto flex h-14 w-full max-w-[1280px] items-center gap-6 px-5 sm:px-8 lg:gap-10 lg:px-10">
         <a
           href="#top"
           className="flex shrink-0 items-center gap-2.5 font-mono text-base font-medium tracking-tight"

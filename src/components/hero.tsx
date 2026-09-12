@@ -16,7 +16,7 @@ export function Hero() {
         className="pointer-events-none absolute -top-60 -left-44 h-[580px] w-[860px] rounded-full bg-primary/[0.08] blur-[150px]"
       />
 
-      <div className="relative mx-auto flex w-full max-w-[1280px] flex-col items-start gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:flex-row lg:items-center lg:gap-18 lg:px-10 lg:py-28">
+      <div className="relative mx-auto flex w-full max-w-[1280px] flex-col items-start gap-12 px-5 pt-5 pb-20 sm:px-8 sm:pt-8 sm:pb-24 lg:flex-row lg:items-center lg:gap-18 lg:px-10 lg:pt-10 lg:pb-28">
         <div className="flex flex-1 flex-col gap-6">
           <Badge
             variant="outline"
