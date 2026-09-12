@@ -1,0 +1,33 @@
+.desk-font-data {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@keyframes desk-live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.desk-live-dot {
+  animation: desk-live-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes desk-ink-flash {
+  0% {
+    background: #e8b84a;
+    color: #070707;
+  }
+  100% {
+    background: transparent;
+    color: inherit;
+  }
+}
+
+.desk-log-fresh {
+  animation: desk-ink-flash 1.4s ease-out;
+  border-radius: 16px;
+}
