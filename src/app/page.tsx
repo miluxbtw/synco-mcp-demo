@@ -88,7 +88,7 @@ export default function Home() {
             {problems.items.map((item) => (
               <li
                 key={item.index}
-                className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-white/[0.02] p-7 shadow-[0_0_0_1px_rgb(255_255_255/0.03),0_8px_32px_rgb(0_0_0/0.4)]"
+                className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-white/[0.02] p-7 shadow-[0_0_0_1px_rgb(255_255_255/0.03),0_8px_32px_rgb(0_0_0/0.4)] transition-[transform,border-color,box-shadow,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-white/[0.14] hover:bg-white/[0.035] hover:shadow-[0_0_0_1px_rgb(255_255_255/0.05),0_12px_36px_rgb(0_0_0/0.48)]"
               >
                 <span className="font-mono text-xs tracking-[0.14em] text-primary">
                   {item.index}

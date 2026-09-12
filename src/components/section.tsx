@@ -1,4 +1,9 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { cn } from "cn";
+
+import { prefersReducedMotion } from "@/lib/motion";
 
 export function Section({
   id,
@@ -9,8 +14,43 @@ export function Section({
   className?: string;
   children: React.ReactNode;
 }) {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    if (prefersReducedMotion()) {
+      el.dataset.revealed = "true";
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.dataset.revealed = "true";
+          delete el.dataset.revealPending;
+          observer.disconnect();
+          return;
+        }
+
+        if (!el.dataset.revealed) {
+          el.dataset.revealPending = "";
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id={id} className={cn("border-b border-border", className)}>
+    <section
+      ref={ref}
+      id={id}
+      className={cn("section-reveal border-b border-border", className)}
+    >
       <div className="mx-auto w-full max-w-[1280px] px-5 py-24 sm:px-8 sm:py-32 lg:px-10 lg:py-40">
         {children}
       </div>
